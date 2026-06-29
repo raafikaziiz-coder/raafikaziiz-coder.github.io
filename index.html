@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Raafik Aziiz Nur Jalil | Portfolio</title>
+  <link rel="icon" type="image/png" href="ra-logo.png" />
 
   <style>
     :root {
@@ -65,8 +66,19 @@
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       font-weight: 800;
       letter-spacing: 0.4px;
+    }
+
+    .logo img {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
     }
 
     .logo span {
@@ -114,6 +126,26 @@
       color: white;
     }
 
+    .lang-id {
+      display: none;
+    }
+
+    body.id .lang-en {
+      display: none;
+    }
+
+    body.id .lang-id {
+      display: inline;
+    }
+
+    body.id p.lang-id,
+    body.id div.lang-id,
+    body.id h1.lang-id,
+    body.id h2.lang-id,
+    body.id h3.lang-id {
+      display: block;
+    }
+
     .hero {
       min-height: 100vh;
       display: flex;
@@ -146,7 +178,7 @@
       margin-bottom: 20px;
     }
 
-    h1 span {
+    .gradient {
       background: linear-gradient(135deg, var(--blue), var(--cyan));
       -webkit-background-clip: text;
       color: transparent;
@@ -363,23 +395,6 @@
       font-size: 14px;
     }
 
-    [data-lang="id"] {
-      display: none;
-    }
-
-    body.id [data-lang="en"] {
-      display: none;
-    }
-
-    body.id [data-lang="id"] {
-      display: inline;
-    }
-
-    body.id p[data-lang="id"],
-    body.id div[data-lang="id"] {
-      display: block;
-    }
-
     @media (max-width: 850px) {
       .hero-grid,
       .project-card {
@@ -397,6 +412,10 @@
       .nav-inner {
         height: 68px;
       }
+
+      h1 {
+        letter-spacing: -1px;
+      }
     }
   </style>
 </head>
@@ -405,7 +424,10 @@
 
   <nav>
     <div class="container nav-inner">
-      <a href="#" class="logo">Raafik<span>.</span></a>
+      <a class="logo" href="#">
+        <img src="ra-logo.png" alt="Raafik logo" />
+        Raafik<span>.</span>
+      </a>
 
       <div class="nav-right">
         <div class="nav-links">
@@ -429,30 +451,35 @@
       <div class="container hero-grid">
         <div>
           <div class="tag">
-            <span data-lang="en">● Portfolio Website</span>
-            <span data-lang="id">● Website Portofolio</span>
+            <span class="lang-en">● Portfolio Website</span>
+            <span class="lang-id">● Website Portofolio</span>
           </div>
 
-          <h1>
-            <span data-lang="en">Building tools, learning systems, and growing through <span>real projects.</span></span>
-            <span data-lang="id">Membangun tools, memahami sistem, dan berkembang lewat <span>project nyata.</span></span>
+          <h1 class="lang-en">
+            Building tools, learning systems, and growing through
+            <span class="gradient">real projects.</span>
           </h1>
 
-          <p class="subtitle" data-lang="en">
+          <h1 class="lang-id">
+            Membangun tools, memahami sistem, dan berkembang lewat
+            <span class="gradient">project nyata.</span>
+          </h1>
+
+          <p class="subtitle lang-en">
             Hi, I'm Raafik Aziiz Nur Jalil — a Software Engineering Student focused on Pine Script,
             TradingView tools, Linux, networking, and practical problem solving.
           </p>
 
-          <p class="subtitle" data-lang="id">
+          <p class="subtitle lang-id">
             Halo, saya Raafik Aziiz Nur Jalil — pelajar Software Engineering yang fokus pada Pine Script,
             tools TradingView, Linux, networking, dan problem solving praktis.
           </p>
 
-          <p class="quote" data-lang="en">
+          <p class="quote lang-en">
             “Learning by building. Improving by solving. Growing one project at a time.”
           </p>
 
-          <p class="quote" data-lang="id">
+          <p class="quote lang-id">
             “Belajar dengan membangun. Berkembang dengan menyelesaikan masalah. Maju satu project setiap waktu.”
           </p>
 
@@ -462,8 +489,8 @@
             </a>
 
             <a class="btn secondary" href="#project">
-              <span data-lang="en">Featured Project</span>
-              <span data-lang="id">Project Utama</span>
+              <span class="lang-en">Featured Project</span>
+              <span class="lang-id">Project Utama</span>
             </a>
           </div>
 
@@ -492,8 +519,8 @@
           <div class="panel-content">
             <div class="status">
               <span>Status</span>
-              <strong data-lang="en">Learning & Building</strong>
-              <strong data-lang="id">Belajar & Membangun</strong>
+              <strong class="lang-en">Learning & Building</strong>
+              <strong class="lang-id">Belajar & Membangun</strong>
             </div>
 
             <div class="status">
@@ -513,8 +540,8 @@
 
             <div class="status">
               <span>Progress</span>
-              <strong data-lang="en">One Commit at a Time</strong>
-              <strong data-lang="id">Satu Commit Setiap Waktu</strong>
+              <strong class="lang-en">One Commit at a Time</strong>
+              <strong class="lang-id">Satu Commit Setiap Waktu</strong>
             </div>
           </div>
         </div>
@@ -524,21 +551,21 @@
     <section id="about">
       <div class="container">
         <div class="section-title">
-          <h2 data-lang="en">About Me</h2>
-          <h2 data-lang="id">Tentang Saya</h2>
+          <h2 class="lang-en">About Me</h2>
+          <h2 class="lang-id">Tentang Saya</h2>
 
-          <p data-lang="en">A short introduction about what I'm building and learning.</p>
-          <p data-lang="id">Perkenalan singkat tentang apa yang sedang saya bangun dan pelajari.</p>
+          <p class="lang-en">A short introduction about what I'm building and learning.</p>
+          <p class="lang-id">Perkenalan singkat tentang apa yang sedang saya bangun dan pelajari.</p>
         </div>
 
         <div class="card">
-          <p data-lang="en">
+          <p class="lang-en">
             I'm an Indonesian developer currently learning Software Engineering by building real projects.
             I enjoy exploring how systems work, solving technical problems, and creating tools that are practical,
             structured, and useful.
           </p>
 
-          <p data-lang="id">
+          <p class="lang-id">
             Saya developer Indonesia yang sedang belajar Software Engineering lewat project nyata.
             Saya tertarik memahami cara kerja sistem, menyelesaikan masalah teknis, dan membuat tools yang praktis,
             terstruktur, dan berguna.
@@ -550,11 +577,11 @@
     <section id="skills">
       <div class="container">
         <div class="section-title">
-          <h2 data-lang="en">Skills & Tools</h2>
-          <h2 data-lang="id">Skill & Tools</h2>
+          <h2 class="lang-en">Skills & Tools</h2>
+          <h2 class="lang-id">Skill & Tools</h2>
 
-          <p data-lang="en">Technologies and topics I'm currently learning and using.</p>
-          <p data-lang="id">Teknologi dan topik yang sedang saya pelajari dan gunakan.</p>
+          <p class="lang-en">Technologies and topics I'm currently learning and using.</p>
+          <p class="lang-id">Teknologi dan topik yang sedang saya pelajari dan gunakan.</p>
         </div>
 
         <div class="skills">
@@ -575,23 +602,23 @@
     <section id="project">
       <div class="container">
         <div class="section-title">
-          <h2 data-lang="en">Featured Project</h2>
-          <h2 data-lang="id">Project Utama</h2>
+          <h2 class="lang-en">Featured Project</h2>
+          <h2 class="lang-id">Project Utama</h2>
 
-          <p data-lang="en">The main project I'm currently building and improving.</p>
-          <p data-lang="id">Project utama yang sedang saya bangun dan kembangkan.</p>
+          <p class="lang-en">The main project I'm currently building and improving.</p>
+          <p class="lang-id">Project utama yang sedang saya bangun dan kembangkan.</p>
         </div>
 
         <div class="card project-card">
           <div>
             <h3>SR Hunter V4</h3>
 
-            <p data-lang="en">
+            <p class="lang-en">
               SR Hunter V4 is a layered Pine Script indicator designed for TradingView.
               It helps validate trading setups through structured market analysis instead of blind signals.
             </p>
 
-            <p data-lang="id">
+            <p class="lang-id">
               SR Hunter V4 adalah indikator Pine Script berlapis untuk TradingView.
               Tools ini membantu memvalidasi setup trading melalui analisis market yang terstruktur,
               bukan sekadar sinyal buy atau sell.
@@ -606,8 +633,8 @@
             <br />
 
             <a class="btn primary" href="https://github.com/raafikaziiz-coder/tradingview-pine-scripts" target="_blank">
-              <span data-lang="en">View Repository</span>
-              <span data-lang="id">Lihat Repository</span>
+              <span class="lang-en">View Repository</span>
+              <span class="lang-id">Lihat Repository</span>
             </a>
           </div>
 
@@ -635,36 +662,36 @@
     <section>
       <div class="container">
         <div class="section-title">
-          <h2 data-lang="en">Current Mission</h2>
-          <h2 data-lang="id">Misi Saat Ini</h2>
+          <h2 class="lang-en">Current Mission</h2>
+          <h2 class="lang-id">Misi Saat Ini</h2>
 
-          <p data-lang="en">What I'm focusing on right now.</p>
-          <p data-lang="id">Hal yang sedang saya fokuskan sekarang.</p>
+          <p class="lang-en">What I'm focusing on right now.</p>
+          <p class="lang-id">Hal yang sedang saya fokuskan sekarang.</p>
         </div>
 
         <div class="grid">
           <div class="card">
-            <h3 data-lang="en">Build</h3>
-            <h3 data-lang="id">Membangun</h3>
+            <h3 class="lang-en">Build</h3>
+            <h3 class="lang-id">Membangun</h3>
 
-            <p data-lang="en">Creating real projects to strengthen practical coding and development skills.</p>
-            <p data-lang="id">Membuat project nyata untuk memperkuat skill coding dan development.</p>
+            <p class="lang-en">Creating real projects to strengthen practical coding and development skills.</p>
+            <p class="lang-id">Membuat project nyata untuk memperkuat skill coding dan development.</p>
           </div>
 
           <div class="card">
-            <h3 data-lang="en">Learn</h3>
-            <h3 data-lang="id">Belajar</h3>
+            <h3 class="lang-en">Learn</h3>
+            <h3 class="lang-id">Belajar</h3>
 
-            <p data-lang="en">Improving Software Engineering, Pine Script, Linux, and Networking fundamentals.</p>
-            <p data-lang="id">Meningkatkan pemahaman Software Engineering, Pine Script, Linux, dan Networking.</p>
+            <p class="lang-en">Improving Software Engineering, Pine Script, Linux, and Networking fundamentals.</p>
+            <p class="lang-id">Meningkatkan pemahaman Software Engineering, Pine Script, Linux, dan Networking.</p>
           </div>
 
           <div class="card">
-            <h3 data-lang="en">Document</h3>
-            <h3 data-lang="id">Dokumentasi</h3>
+            <h3 class="lang-en">Document</h3>
+            <h3 class="lang-id">Dokumentasi</h3>
 
-            <p data-lang="en">Writing clearer documentation so every project is easier to understand and improve.</p>
-            <p data-lang="id">Menulis dokumentasi yang lebih jelas agar setiap project mudah dipahami dan dikembangkan.</p>
+            <p class="lang-en">Writing clearer documentation so every project is easier to understand and improve.</p>
+            <p class="lang-id">Menulis dokumentasi yang lebih jelas agar setiap project mudah dipahami dan dikembangkan.</p>
           </div>
         </div>
       </div>
@@ -673,11 +700,11 @@
     <section id="contact">
       <div class="container">
         <div class="section-title">
-          <h2 data-lang="en">Contact</h2>
-          <h2 data-lang="id">Kontak</h2>
+          <h2 class="lang-en">Contact</h2>
+          <h2 class="lang-id">Kontak</h2>
 
-          <p data-lang="en">Let's connect and build something useful.</p>
-          <p data-lang="id">Mari terhubung dan membangun sesuatu yang berguna.</p>
+          <p class="lang-en">Let's connect and build something useful.</p>
+          <p class="lang-id">Mari terhubung dan membangun sesuatu yang berguna.</p>
         </div>
 
         <div class="card contact-card">
@@ -698,8 +725,8 @@
   </main>
 
   <footer>
-    <p data-lang="en">© 2026 Raafik Aziiz Nur Jalil. Built with discipline, curiosity, and continuous learning.</p>
-    <p data-lang="id">© 2026 Raafik Aziiz Nur Jalil. Dibangun dengan disiplin, rasa ingin tahu, dan pembelajaran berkelanjutan.</p>
+    <p class="lang-en">© 2026 Raafik Aziiz Nur Jalil. Built with discipline, curiosity, and continuous learning.</p>
+    <p class="lang-id">© 2026 Raafik Aziiz Nur Jalil. Dibangun dengan disiplin, rasa ingin tahu, dan pembelajaran berkelanjutan.</p>
   </footer>
 
   <script>
