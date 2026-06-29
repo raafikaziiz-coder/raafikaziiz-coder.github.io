@@ -8,8 +8,7 @@
   <style>
     :root {
       --bg: #070b12;
-      --card: #0f1623;
-      --card-soft: #121b2a;
+      --card: rgba(255, 255, 255, 0.045);
       --text: #eef4ff;
       --muted: #91a4bd;
       --blue: #4da3ff;
@@ -31,7 +30,7 @@
 
     body {
       background:
-        radial-gradient(circle at top left, rgba(77, 163, 255, 0.12), transparent 32%),
+        radial-gradient(circle at top left, rgba(77, 163, 255, 0.13), transparent 34%),
         radial-gradient(circle at top right, rgba(79, 255, 226, 0.09), transparent 28%),
         var(--bg);
       color: var(--text);
@@ -68,11 +67,16 @@
     .logo {
       font-weight: 800;
       letter-spacing: 0.4px;
-      color: var(--text);
     }
 
     .logo span {
       color: var(--blue);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 18px;
     }
 
     .nav-links {
@@ -86,6 +90,30 @@
       color: var(--text);
     }
 
+    .lang-switch {
+      display: flex;
+      gap: 6px;
+      padding: 5px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .lang-switch button {
+      border: none;
+      cursor: pointer;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .lang-switch button.active {
+      background: linear-gradient(135deg, var(--blue), #2f7df6);
+      color: white;
+    }
+
     .hero {
       min-height: 100vh;
       display: flex;
@@ -96,14 +124,12 @@
     .hero-grid {
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
+      gap: 42px;
       align-items: center;
     }
 
     .tag {
       display: inline-flex;
-      align-items: center;
-      gap: 8px;
       padding: 8px 14px;
       border: 1px solid var(--border);
       border-radius: 999px;
@@ -143,6 +169,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 14px;
+      align-items: center;
     }
 
     .btn {
@@ -151,6 +178,9 @@
       font-weight: 700;
       transition: 0.25s;
       border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
     }
 
     .btn.primary {
@@ -165,8 +195,32 @@
       color: var(--text);
     }
 
-    .btn:hover {
+    .btn:hover,
+    .social:hover {
       transform: translateY(-3px);
+    }
+
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .social {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border);
+      transition: 0.25s;
+    }
+
+    .social svg {
+      width: 21px;
+      height: 21px;
+      fill: var(--text);
     }
 
     .panel {
@@ -200,6 +254,7 @@
     .status {
       display: flex;
       justify-content: space-between;
+      gap: 20px;
       padding: 14px 0;
       border-bottom: 1px solid var(--border);
       color: var(--muted);
@@ -208,6 +263,7 @@
 
     .status strong {
       color: var(--text);
+      text-align: right;
     }
 
     section {
@@ -235,7 +291,7 @@
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.035);
+      background: var(--card);
       border: 1px solid var(--border);
       border-radius: 22px;
       padding: 24px;
@@ -245,12 +301,11 @@
     .card:hover {
       transform: translateY(-5px);
       border-color: rgba(77, 163, 255, 0.45);
-      background: rgba(255, 255, 255, 0.055);
+      background: rgba(255, 255, 255, 0.06);
     }
 
     .card h3 {
       margin-bottom: 10px;
-      color: var(--text);
     }
 
     .card p {
@@ -308,6 +363,23 @@
       font-size: 14px;
     }
 
+    [data-lang="id"] {
+      display: none;
+    }
+
+    body.id [data-lang="en"] {
+      display: none;
+    }
+
+    body.id [data-lang="id"] {
+      display: inline;
+    }
+
+    body.id p[data-lang="id"],
+    body.id div[data-lang="id"] {
+      display: block;
+    }
+
     @media (max-width: 850px) {
       .hero-grid,
       .project-card {
@@ -321,6 +393,10 @@
       .nav-links {
         display: none;
       }
+
+      .nav-inner {
+        height: 68px;
+      }
     }
   </style>
 </head>
@@ -329,12 +405,20 @@
 
   <nav>
     <div class="container nav-inner">
-      <div class="logo">Raafik<span>.</span></div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#project">Project</a>
-        <a href="#contact">Contact</a>
+      <a href="#" class="logo">Raafik<span>.</span></a>
+
+      <div class="nav-right">
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#project">Project</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="lang-switch">
+          <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+          <button id="btn-id" onclick="setLang('id')">ID</button>
+        </div>
       </div>
     </div>
   </nav>
@@ -344,24 +428,63 @@
     <header class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="tag">● Portfolio Website</div>
+          <div class="tag">
+            <span data-lang="en">● Portfolio Website</span>
+            <span data-lang="id">● Website Portofolio</span>
+          </div>
 
           <h1>
-            Building tools, learning systems, and growing through <span>real projects.</span>
+            <span data-lang="en">Building tools, learning systems, and growing through <span>real projects.</span></span>
+            <span data-lang="id">Membangun tools, memahami sistem, dan berkembang lewat <span>project nyata.</span></span>
           </h1>
 
-          <p class="subtitle">
+          <p class="subtitle" data-lang="en">
             Hi, I'm Raafik Aziiz Nur Jalil — a Software Engineering Student focused on Pine Script,
             TradingView tools, Linux, networking, and practical problem solving.
           </p>
 
-          <p class="quote">
+          <p class="subtitle" data-lang="id">
+            Halo, saya Raafik Aziiz Nur Jalil — pelajar Software Engineering yang fokus pada Pine Script,
+            tools TradingView, Linux, networking, dan problem solving praktis.
+          </p>
+
+          <p class="quote" data-lang="en">
             “Learning by building. Improving by solving. Growing one project at a time.”
           </p>
 
+          <p class="quote" data-lang="id">
+            “Belajar dengan membangun. Berkembang dengan menyelesaikan masalah. Maju satu project setiap waktu.”
+          </p>
+
           <div class="buttons">
-            <a class="btn primary" href="https://github.com/raafikaziiz-coder" target="_blank">View GitHub</a>
-            <a class="btn secondary" href="#project">Featured Project</a>
+            <a class="btn primary" href="https://github.com/raafikaziiz-coder" target="_blank">
+              GitHub
+            </a>
+
+            <a class="btn secondary" href="#project">
+              <span data-lang="en">Featured Project</span>
+              <span data-lang="id">Project Utama</span>
+            </a>
+          </div>
+
+          <div class="socials">
+            <a class="social" href="https://github.com/raafikaziiz-coder" target="_blank" title="GitHub">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.58.1.79-.25.79-.56v-2.15c-3.2.69-3.87-1.37-3.87-1.37-.53-1.35-1.3-1.71-1.3-1.71-1.06-.72.08-.71.08-.71 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.74 1.27 3.41.97.1-.76.41-1.27.74-1.56-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.2-3.1-.12-.29-.52-1.47.11-3.06 0 0 .98-.31 3.2 1.18.93-.26 1.93-.39 2.93-.39.99 0 1.99.13 2.92.39 2.23-1.49 3.2-1.18 3.2-1.18.64 1.59.24 2.77.12 3.06.75.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.27 5.69.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.52 11.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/>
+              </svg>
+            </a>
+
+            <a class="social" href="https://instagram.com/raff.nj" target="_blank" title="Instagram">
+              <svg viewBox="0 0 24 24">
+                <path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8Zm4.2 3.2A4.8 4.8 0 1 1 7.2 12 4.8 4.8 0 0 1 12 7.2Zm0 2A2.8 2.8 0 1 0 14.8 12 2.8 2.8 0 0 0 12 9.2Zm5-2.55a1.15 1.15 0 1 1-1.15 1.15A1.15 1.15 0 0 1 17 6.65Z"/>
+              </svg>
+            </a>
+
+            <a class="social" href="mailto:raafikaziiznur@gmail.com" title="Email">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Zm8 8.4L4 7.3V18h16V7.3l-8 5.1Zm0-2.4L19.2 6H4.8L12 10Z"/>
+              </svg>
+            </a>
           </div>
         </div>
 
@@ -369,23 +492,29 @@
           <div class="panel-content">
             <div class="status">
               <span>Status</span>
-              <strong>Learning & Building</strong>
+              <strong data-lang="en">Learning & Building</strong>
+              <strong data-lang="id">Belajar & Membangun</strong>
             </div>
+
             <div class="status">
               <span>Focus</span>
               <strong>Pine Script</strong>
             </div>
+
             <div class="status">
-              <span>Main Project</span>
+              <span>Project</span>
               <strong>SR Hunter V4</strong>
             </div>
+
             <div class="status">
               <span>Mindset</span>
               <strong>Think First</strong>
             </div>
+
             <div class="status">
               <span>Progress</span>
-              <strong>One Commit at a Time</strong>
+              <strong data-lang="en">One Commit at a Time</strong>
+              <strong data-lang="id">Satu Commit Setiap Waktu</strong>
             </div>
           </div>
         </div>
@@ -395,15 +524,24 @@
     <section id="about">
       <div class="container">
         <div class="section-title">
-          <h2>About Me</h2>
-          <p>A short introduction about what I'm building and learning.</p>
+          <h2 data-lang="en">About Me</h2>
+          <h2 data-lang="id">Tentang Saya</h2>
+
+          <p data-lang="en">A short introduction about what I'm building and learning.</p>
+          <p data-lang="id">Perkenalan singkat tentang apa yang sedang saya bangun dan pelajari.</p>
         </div>
 
         <div class="card">
-          <p>
+          <p data-lang="en">
             I'm an Indonesian developer currently learning Software Engineering by building real projects.
             I enjoy exploring how systems work, solving technical problems, and creating tools that are practical,
             structured, and useful.
+          </p>
+
+          <p data-lang="id">
+            Saya developer Indonesia yang sedang belajar Software Engineering lewat project nyata.
+            Saya tertarik memahami cara kerja sistem, menyelesaikan masalah teknis, dan membuat tools yang praktis,
+            terstruktur, dan berguna.
           </p>
         </div>
       </div>
@@ -412,8 +550,11 @@
     <section id="skills">
       <div class="container">
         <div class="section-title">
-          <h2>Skills & Tools</h2>
-          <p>Technologies and topics I'm currently learning and using.</p>
+          <h2 data-lang="en">Skills & Tools</h2>
+          <h2 data-lang="id">Skill & Tools</h2>
+
+          <p data-lang="en">Technologies and topics I'm currently learning and using.</p>
+          <p data-lang="id">Teknologi dan topik yang sedang saya pelajari dan gunakan.</p>
         </div>
 
         <div class="skills">
@@ -434,16 +575,26 @@
     <section id="project">
       <div class="container">
         <div class="section-title">
-          <h2>Featured Project</h2>
-          <p>The main project I'm currently building and improving.</p>
+          <h2 data-lang="en">Featured Project</h2>
+          <h2 data-lang="id">Project Utama</h2>
+
+          <p data-lang="en">The main project I'm currently building and improving.</p>
+          <p data-lang="id">Project utama yang sedang saya bangun dan kembangkan.</p>
         </div>
 
         <div class="card project-card">
           <div>
             <h3>SR Hunter V4</h3>
-            <p>
+
+            <p data-lang="en">
               SR Hunter V4 is a layered Pine Script indicator designed for TradingView.
               It helps validate trading setups through structured market analysis instead of blind signals.
+            </p>
+
+            <p data-lang="id">
+              SR Hunter V4 adalah indikator Pine Script berlapis untuk TradingView.
+              Tools ini membantu memvalidasi setup trading melalui analisis market yang terstruktur,
+              bukan sekadar sinyal buy atau sell.
             </p>
 
             <br />
@@ -455,7 +606,8 @@
             <br />
 
             <a class="btn primary" href="https://github.com/raafikaziiz-coder/tradingview-pine-scripts" target="_blank">
-              View Repository
+              <span data-lang="en">View Repository</span>
+              <span data-lang="id">Lihat Repository</span>
             </a>
           </div>
 
@@ -483,24 +635,36 @@
     <section>
       <div class="container">
         <div class="section-title">
-          <h2>Current Mission</h2>
-          <p>What I'm focusing on right now.</p>
+          <h2 data-lang="en">Current Mission</h2>
+          <h2 data-lang="id">Misi Saat Ini</h2>
+
+          <p data-lang="en">What I'm focusing on right now.</p>
+          <p data-lang="id">Hal yang sedang saya fokuskan sekarang.</p>
         </div>
 
         <div class="grid">
           <div class="card">
-            <h3>Build</h3>
-            <p>Creating real projects to strengthen practical coding and development skills.</p>
+            <h3 data-lang="en">Build</h3>
+            <h3 data-lang="id">Membangun</h3>
+
+            <p data-lang="en">Creating real projects to strengthen practical coding and development skills.</p>
+            <p data-lang="id">Membuat project nyata untuk memperkuat skill coding dan development.</p>
           </div>
 
           <div class="card">
-            <h3>Learn</h3>
-            <p>Improving Software Engineering, Pine Script, Linux, and Networking fundamentals.</p>
+            <h3 data-lang="en">Learn</h3>
+            <h3 data-lang="id">Belajar</h3>
+
+            <p data-lang="en">Improving Software Engineering, Pine Script, Linux, and Networking fundamentals.</p>
+            <p data-lang="id">Meningkatkan pemahaman Software Engineering, Pine Script, Linux, dan Networking.</p>
           </div>
 
           <div class="card">
-            <h3>Document</h3>
-            <p>Writing clearer documentation so every project is easier to understand and improve.</p>
+            <h3 data-lang="en">Document</h3>
+            <h3 data-lang="id">Dokumentasi</h3>
+
+            <p data-lang="en">Writing clearer documentation so every project is easier to understand and improve.</p>
+            <p data-lang="id">Menulis dokumentasi yang lebih jelas agar setiap project mudah dipahami dan dikembangkan.</p>
           </div>
         </div>
       </div>
@@ -509,8 +673,11 @@
     <section id="contact">
       <div class="container">
         <div class="section-title">
-          <h2>Contact</h2>
-          <p>Let's connect and build something useful.</p>
+          <h2 data-lang="en">Contact</h2>
+          <h2 data-lang="id">Kontak</h2>
+
+          <p data-lang="en">Let's connect and build something useful.</p>
+          <p data-lang="id">Mari terhubung dan membangun sesuatu yang berguna.</p>
         </div>
 
         <div class="card contact-card">
@@ -520,8 +687,9 @@
           </div>
 
           <div class="buttons">
-            <a class="btn primary" href="mailto:raafikaziiznur@gmail.com">Email Me</a>
+            <a class="btn primary" href="mailto:raafikaziiznur@gmail.com">Email</a>
             <a class="btn secondary" href="https://instagram.com/raff.nj" target="_blank">Instagram</a>
+            <a class="btn secondary" href="https://github.com/raafikaziiz-coder" target="_blank">GitHub</a>
           </div>
         </div>
       </div>
@@ -530,8 +698,23 @@
   </main>
 
   <footer>
-    <p>© 2026 Raafik Aziiz Nur Jalil. Built with discipline, curiosity, and continuous learning.</p>
+    <p data-lang="en">© 2026 Raafik Aziiz Nur Jalil. Built with discipline, curiosity, and continuous learning.</p>
+    <p data-lang="id">© 2026 Raafik Aziiz Nur Jalil. Dibangun dengan disiplin, rasa ingin tahu, dan pembelajaran berkelanjutan.</p>
   </footer>
+
+  <script>
+    function setLang(lang) {
+      document.body.classList.toggle("id", lang === "id");
+
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+      document.getElementById("btn-id").classList.toggle("active", lang === "id");
+
+      localStorage.setItem("portfolioLang", lang);
+    }
+
+    const savedLang = localStorage.getItem("portfolioLang") || "en";
+    setLang(savedLang);
+  </script>
 
 </body>
 </html>
