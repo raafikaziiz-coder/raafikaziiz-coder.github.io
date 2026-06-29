@@ -2,7 +2,7 @@
 
 Personal portfolio website for **Raafik Aziiz Nur Jalil**.
 
-Live website:  
+Live Website:  
 https://raafikaziiz-coder.github.io
 
 ---
@@ -20,6 +20,7 @@ This website is built as a personal portfolio to showcase my developer journey, 
 - English / Indonesian language switch
 - Social media links
 - Featured project section
+- Custom personal logo
 - GitHub Pages deployment
 
 ---
