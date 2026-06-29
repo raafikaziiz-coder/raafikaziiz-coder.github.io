@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Raafik Aziiz Nur Jalil | Portfolio</title>
+
+  <style>
+    :root {
+      --bg: #070b12;
+      --card: #0f1623;
+      --card-soft: #121b2a;
+      --text: #eef4ff;
+      --muted: #91a4bd;
+      --blue: #4da3ff;
+      --cyan: #4fffe2;
+      --border: rgba(255, 255, 255, 0.08);
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at top left, rgba(77, 163, 255, 0.12), transparent 32%),
+        radial-gradient(circle at top right, rgba(79, 255, 226, 0.09), transparent 28%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(7, 11, 18, 0.72);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: var(--text);
+    }
+
+    .logo span {
+      color: var(--blue);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 90px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--cyan);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 18px;
+      margin-bottom: 28px;
+    }
+
+    .quote {
+      color: var(--text);
+      font-weight: 600;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      padding: 13px 20px;
+      border-radius: 14px;
+      font-weight: 700;
+      transition: 0.25s;
+      border: 1px solid transparent;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, var(--blue), #2f7df6);
+      color: white;
+      box-shadow: 0 14px 35px rgba(77, 163, 255, 0.18);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: var(--border);
+      color: var(--text);
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .panel {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.025));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 24px 80px var(--shadow);
+      overflow: hidden;
+    }
+
+    .panel::before {
+      content: "";
+      position: absolute;
+      inset: -80px;
+      background: radial-gradient(circle, rgba(77, 163, 255, 0.18), transparent 42%);
+      animation: floatGlow 7s infinite alternate ease-in-out;
+    }
+
+    @keyframes floatGlow {
+      from { transform: translate(-20px, -20px); }
+      to { transform: translate(20px, 20px); }
+    }
+
+    .panel-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .status {
+      display: flex;
+      justify-content: space-between;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .status strong {
+      color: var(--text);
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-title {
+      margin-bottom: 34px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 44px);
+      letter-spacing: -1px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(77, 163, 255, 0.45);
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(77, 163, 255, 0.08);
+      border: 1px solid rgba(77, 163, 255, 0.18);
+      color: #cfe7ff;
+      font-size: 14px;
+    }
+
+    .project-card {
+      display: grid;
+      grid-template-columns: 1fr 0.85fr;
+      gap: 24px;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(77, 163, 255, 0.08), rgba(79, 255, 226, 0.04));
+    }
+
+    .pipeline {
+      background: #080d15;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 20px;
+      color: #b9c7d8;
+      font-family: monospace;
+      font-size: 14px;
+      overflow-x: auto;
+    }
+
+    .contact-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      padding: 34px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 14px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid,
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="container nav-inner">
+      <div class="logo">Raafik<span>.</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#project">Project</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <header class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="tag">● Portfolio Website</div>
+
+          <h1>
+            Building tools, learning systems, and growing through <span>real projects.</span>
+          </h1>
+
+          <p class="subtitle">
+            Hi, I'm Raafik Aziiz Nur Jalil — a Software Engineering Student focused on Pine Script,
+            TradingView tools, Linux, networking, and practical problem solving.
+          </p>
+
+          <p class="quote">
+            “Learning by building. Improving by solving. Growing one project at a time.”
+          </p>
+
+          <div class="buttons">
+            <a class="btn primary" href="https://github.com/raafikaziiz-coder" target="_blank">View GitHub</a>
+            <a class="btn secondary" href="#project">Featured Project</a>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-content">
+            <div class="status">
+              <span>Status</span>
+              <strong>Learning & Building</strong>
+            </div>
+            <div class="status">
+              <span>Focus</span>
+              <strong>Pine Script</strong>
+            </div>
+            <div class="status">
+              <span>Main Project</span>
+              <strong>SR Hunter V4</strong>
+            </div>
+            <div class="status">
+              <span>Mindset</span>
+              <strong>Think First</strong>
+            </div>
+            <div class="status">
+              <span>Progress</span>
+              <strong>One Commit at a Time</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>About Me</h2>
+          <p>A short introduction about what I'm building and learning.</p>
+        </div>
+
+        <div class="card">
+          <p>
+            I'm an Indonesian developer currently learning Software Engineering by building real projects.
+            I enjoy exploring how systems work, solving technical problems, and creating tools that are practical,
+            structured, and useful.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills & Tools</h2>
+          <p>Technologies and topics I'm currently learning and using.</p>
+        </div>
+
+        <div class="skills">
+          <span class="skill">Pine Script</span>
+          <span class="skill">TradingView</span>
+          <span class="skill">Git</span>
+          <span class="skill">GitHub</span>
+          <span class="skill">Linux</span>
+          <span class="skill">Windows</span>
+          <span class="skill">Networking</span>
+          <span class="skill">Troubleshooting</span>
+          <span class="skill">Documentation</span>
+          <span class="skill">Problem Solving</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="project">
+      <div class="container">
+        <div class="section-title">
+          <h2>Featured Project</h2>
+          <p>The main project I'm currently building and improving.</p>
+        </div>
+
+        <div class="card project-card">
+          <div>
+            <h3>SR Hunter V4</h3>
+            <p>
+              SR Hunter V4 is a layered Pine Script indicator designed for TradingView.
+              It helps validate trading setups through structured market analysis instead of blind signals.
+            </p>
+
+            <br />
+
+            <p>
+              <strong>Philosophy:</strong> Think First. Trade Later.
+            </p>
+
+            <br />
+
+            <a class="btn primary" href="https://github.com/raafikaziiz-coder/tradingview-pine-scripts" target="_blank">
+              View Repository
+            </a>
+          </div>
+
+          <div class="pipeline">
+            Trend<br>
+            ↓<br>
+            Structure<br>
+            ↓<br>
+            Location<br>
+            ↓<br>
+            Trigger<br>
+            ↓<br>
+            Quality<br>
+            ↓<br>
+            Risk<br>
+            ↓<br>
+            Decision<br>
+            ↓<br>
+            UI Output
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Current Mission</h2>
+          <p>What I'm focusing on right now.</p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Build</h3>
+            <p>Creating real projects to strengthen practical coding and development skills.</p>
+          </div>
+
+          <div class="card">
+            <h3>Learn</h3>
+            <p>Improving Software Engineering, Pine Script, Linux, and Networking fundamentals.</p>
+          </div>
+
+          <div class="card">
+            <h3>Document</h3>
+            <p>Writing clearer documentation so every project is easier to understand and improve.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Let's connect and build something useful.</p>
+        </div>
+
+        <div class="card contact-card">
+          <div>
+            <h3>Raafik Aziiz Nur Jalil</h3>
+            <p>Software Engineering Student • Pine Script Developer • Linux Enthusiast</p>
+          </div>
+
+          <div class="buttons">
+            <a class="btn primary" href="mailto:raafikaziiznur@gmail.com">Email Me</a>
+            <a class="btn secondary" href="https://instagram.com/raff.nj" target="_blank">Instagram</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Raafik Aziiz Nur Jalil. Built with discipline, curiosity, and continuous learning.</p>
+  </footer>
+
+</body>
+</html>
