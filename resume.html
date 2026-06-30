@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Raafik Aziiz Nur Jaliil — Resume</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui;
+      background: #030712;
+      color: #e5e7eb;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* ===== TOP BAR ===== */
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .back {
+      color: #38bdf8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .btn {
+      background: rgba(56,189,248,0.15);
+      border: 1px solid rgba(56,189,248,0.3);
+      padding: 8px 14px;
+      border-radius: 999px;
+      text-decoration: none;
+      color: #e5e7eb;
+      font-size: 14px;
+    }
+
+    /* ===== HERO ===== */
+
+    .hero {
+      background: linear-gradient(145deg,#07111f,#020617);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 24px;
+      padding: 30px;
+      margin-bottom: 28px;
+    }
+
+    .name {
+      font-size: 36px;
+      font-weight: 900;
+    }
+
+    .brand {
+      font-size: 18px;
+      color: #38bdf8;
+      font-weight: 700;
+    }
+
+    .desc {
+      margin-top: 10px;
+      color: #94a3b8;
+      max-width: 600px;
+    }
+
+    /* ===== SECTION ===== */
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    /* ===== PROJECT ===== */
+
+    .card {
+      background: #020617;
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 20px;
+      padding: 20px;
+    }
+
+    .card h3 {
+      margin-bottom: 5px;
+    }
+
+    .flow {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .flow span {
+      background: rgba(56,189,248,0.1);
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+    }
+
+    /* ===== SKILLS ===== */
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill {
+      background: rgba(255,255,255,0.04);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+    }
+
+    /* ===== MOBILE ===== */
+
+    @media(max-width:768px){
+      .name { font-size: 26px; }
+      .hero { padding: 20px; }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- ===== TOP BAR ===== -->
+
+    <div class="topbar">
+      <a href="index.html" class="back">← Portfolio</a>
+
+      <div>
+        <a href="Raafik_Aziiz_CV_EN.pdf" class="btn">CV EN</a>
+        <a href="Raafik_Aziiz_CV_ID.pdf" class="btn">CV ID</a>
+      </div>
+    </div>
+
+    <!-- ===== HERO ===== -->
+
+    <div class="hero">
+      <div class="name">Raafik Aziiz Nur Jaliil</div>
+      <div class="brand">Aspiring Software Engineer • Pine Script • Linux</div>
+
+      <div class="desc">
+        I am building practical portfolio projects focused on software engineering, Pine Script development,
+        Linux workflow, troubleshooting, automation, and technical documentation.
+      </div>
+    </div>
+
+    <!-- ===== PROJECT ===== -->
+
+    <div class="section">
+      <h2>Featured Project</h2>
+
+      <div class="card">
+        <h3>SR Hunter V4</h3>
+        <p>
+          TradingView Pine Script indicator focused on structured market analysis and decision-support workflow.
+        </p>
+
+        <div class="flow">
+          <span>Trend</span>
+          <span>Structure</span>
+          <span>Location</span>
+          <span>Trigger</span>
+          <span>Quality</span>
+          <span>Risk</span>
+          <span>Decision</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== SKILLS ===== -->
+
+    <div class="section">
+      <h2>Skills</h2>
+
+      <div class="skills">
+        <div class="skill">Pine Script</div>
+        <div class="skill">TradingView</div>
+        <div class="skill">Software Engineering</div>
+        <div class="skill">Linux</div>
+        <div class="skill">GitHub</div>
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+      </div>
+    </div>
+
+    <!-- ===== EDUCATION ===== -->
+
+    <div class="section">
+      <h2>Education</h2>
+
+      <div class="card">
+        <strong>Universitas AMIKOM Yogyakarta</strong><br>
+        Bachelor of Informatics (Academic Leave Semester 6)
+      </div>
+
+      <div class="card" style="margin-top:10px;">
+        <strong>SMK Darul Qur'an Wal Irsyad Wonosari</strong><br>
+        Multimedia (2018 - 2021)
+      </div>
+    </div>
+
+    <!-- ===== CONTACT ===== -->
+
+    <div class="section">
+      <h2>Contact</h2>
+
+      <div class="card">
+        Email: raafikaziiznur@gmail.com <br>
+        GitHub: github.com/raafikaziiz-coder <br>
+        LinkedIn: linkedin.com/in/raafikaziiznurjaliil
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
