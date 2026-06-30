@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Raafik Aziiz Nur Jaliil — Galaxy Portfolio</title>
-  <meta name="description" content="Portfolio of Raafik Aziiz Nur Jaliil — Aspiring Software Engineer, Pine Script Developer, and Linux Enthusiast." />
+  <meta
+    name="description"
+    content="Portfolio of Raafik Aziiz Nur Jaliil — Aspiring Software Engineer, Pine Script Developer, and Linux Enthusiast."
+  />
 
   <link rel="icon" href="ra-logo.png" type="image/png" />
 
@@ -93,39 +96,65 @@
     }
 
     @keyframes starDrift {
-      from { background-position: 0 0, 28px 36px; }
-      to { background-position: 120px 120px, 180px 160px; }
+      from {
+        background-position: 0 0, 28px 36px;
+      }
+      to {
+        background-position: 120px 120px, 180px 160px;
+      }
     }
 
     @keyframes nebulaFloat {
-      from { opacity: 0.6; transform: translateY(0); }
-      to { opacity: 1; transform: translateY(-18px); }
+      from {
+        opacity: 0.6;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(-18px);
+      }
     }
 
     @keyframes brandFloat {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-2px); }
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-2px);
+      }
     }
 
     @keyframes dotPulse {
       0%, 100% {
         opacity: 0.85;
-        text-shadow: 0 0 12px rgba(56, 189, 248, 0.85), 0 0 22px rgba(56, 189, 248, 0.55);
+        text-shadow:
+          0 0 12px rgba(56, 189, 248, 0.85),
+          0 0 22px rgba(56, 189, 248, 0.55);
       }
       50% {
         opacity: 1;
-        text-shadow: 0 0 18px rgba(56, 189, 248, 1), 0 0 34px rgba(56, 189, 248, 0.75);
+        text-shadow:
+          0 0 18px rgba(56, 189, 248, 1),
+          0 0 34px rgba(56, 189, 248, 0.75);
       }
     }
 
     @keyframes cardGlow {
-      0%, 100% { border-color: rgba(148, 163, 184, 0.17); }
-      50% { border-color: rgba(56, 189, 248, 0.28); }
+      0%, 100% {
+        border-color: rgba(148, 163, 184, 0.17);
+      }
+      50% {
+        border-color: rgba(56, 189, 248, 0.28);
+      }
     }
 
     @keyframes cursorBlink {
-      0%, 45% { opacity: 1; }
-      46%, 100% { opacity: 0; }
+      0%, 45% {
+        opacity: 1;
+      }
+      46%, 100% {
+        opacity: 0;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -325,7 +354,7 @@
       top: 0;
       left: 0;
       z-index: 90;
-      width: min(330px, 86vw);
+      width: min(340px, 88vw);
       height: 100vh;
       padding: 22px;
       background:
@@ -335,6 +364,7 @@
       box-shadow: 24px 0 70px rgba(0, 0, 0, 0.48);
       transform: translateX(-105%);
       transition: transform 0.28s ease;
+      overflow-y: auto;
     }
 
     .drawer.open {
@@ -390,6 +420,12 @@
       color: var(--cyan);
       border-color: rgba(56, 189, 248, 0.32);
       transform: translateX(4px);
+    }
+
+    .drawer-menu a.cv-link {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(34, 197, 94, 0.10));
+      border-color: rgba(56, 189, 248, 0.32);
+      color: #dbeafe;
     }
 
     .drawer-note {
@@ -519,6 +555,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
+      margin-top: 16px;
     }
 
     .btn {
@@ -910,6 +947,14 @@
       <a href="#resume">Resume <span>↗</span></a>
       <a href="#education">Education <span>↗</span></a>
       <a href="#contact">Contact <span>↗</span></a>
+
+      <a class="cv-link" href="Raafik_Aziiz_CV_EN.pdf" target="_blank" rel="noopener">
+        Download CV EN <span>↗</span>
+      </a>
+
+      <a class="cv-link" href="Raafik_Aziiz_CV_ID.pdf" target="_blank" rel="noopener">
+        Download CV ID <span>↗</span>
+      </a>
     </nav>
 
     <p class="drawer-note">
@@ -945,7 +990,6 @@
 
           <div class="actions">
             <a class="btn primary" href="#projects">Explore Projects ✦</a>
-            <a class="btn" href="#resume">View Resume</a>
             <a class="btn" href="https://github.com/raafikaziiz-coder" target="_blank" rel="noopener">GitHub ↗</a>
             <a class="btn" href="https://www.linkedin.com/in/raafikaziiznurjaliil" target="_blank" rel="noopener">LinkedIn ↗</a>
           </div>
@@ -967,6 +1011,7 @@
               <span class="dot"></span>
               <span>raafik@galaxy:~</span>
             </div>
+
             <pre>raafik@galaxy:~$ git status
 On branch main
 Project: SR Hunter V4
@@ -1129,6 +1174,11 @@ Done. UI ready to ship ✦</pre>
               <li>Interested in software, systems, automation, and open source</li>
             </ul>
           </div>
+        </div>
+
+        <div class="actions">
+          <a class="btn primary" href="Raafik_Aziiz_CV_EN.pdf" target="_blank" rel="noopener">Download CV EN</a>
+          <a class="btn" href="Raafik_Aziiz_CV_ID.pdf" target="_blank" rel="noopener">Download CV ID</a>
         </div>
 
         <div class="tags">
