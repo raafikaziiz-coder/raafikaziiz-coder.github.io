@@ -99,6 +99,7 @@
       from {
         background-position: 0 0, 28px 36px;
       }
+
       to {
         background-position: 120px 120px, 180px 160px;
       }
@@ -109,6 +110,7 @@
         opacity: 0.6;
         transform: translateY(0);
       }
+
       to {
         opacity: 1;
         transform: translateY(-18px);
@@ -119,6 +121,7 @@
       0%, 100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-2px);
       }
@@ -131,6 +134,7 @@
           0 0 12px rgba(56, 189, 248, 0.85),
           0 0 22px rgba(56, 189, 248, 0.55);
       }
+
       50% {
         opacity: 1;
         text-shadow:
@@ -143,6 +147,7 @@
       0%, 100% {
         border-color: rgba(148, 163, 184, 0.17);
       }
+
       50% {
         border-color: rgba(56, 189, 248, 0.28);
       }
@@ -152,6 +157,7 @@
       0%, 45% {
         opacity: 1;
       }
+
       46%, 100% {
         opacity: 0;
       }
@@ -210,11 +216,11 @@
       font-weight: 900;
       cursor: pointer;
       box-shadow: 0 0 18px rgba(56, 189, 248, 0.12);
-      transition: 0.2s ease;
+      transition: 0.24s ease;
     }
 
     .menu-toggle:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.02);
       border-color: rgba(56, 189, 248, 0.38);
       color: var(--cyan);
     }
@@ -235,6 +241,12 @@
         0 0 28px rgba(56, 189, 248, 0.12),
         inset 0 0 16px rgba(56, 189, 248, 0.04);
       animation: brandFloat 5s ease-in-out infinite;
+      transition: transform 0.24s ease, border-color 0.24s ease;
+    }
+
+    .brand:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.34);
     }
 
     .logo-frame {
@@ -323,12 +335,13 @@
       font-weight: 950;
       background: linear-gradient(135deg, var(--cyan), var(--green));
       box-shadow: 0 18px 36px rgba(34, 197, 94, 0.12);
-      transition: 0.22s ease;
+      transition: 0.24s ease;
     }
 
     .contact-cta:hover {
       transform: translateY(-2px);
       background: linear-gradient(135deg, #67e8f9, #4ade80);
+      box-shadow: 0 22px 44px rgba(56, 189, 248, 0.18);
     }
 
     /* SIDEBAR MENU */
@@ -341,7 +354,7 @@
       backdrop-filter: blur(6px);
       opacity: 0;
       pointer-events: none;
-      transition: 0.25s ease;
+      transition: 0.28s ease;
     }
 
     .drawer-overlay.open {
@@ -363,7 +376,7 @@
       border-right: 1px solid rgba(56, 189, 248, 0.18);
       box-shadow: 24px 0 70px rgba(0, 0, 0, 0.48);
       transform: translateX(-105%);
-      transition: transform 0.28s ease;
+      transition: transform 0.32s cubic-bezier(0.2, 0.8, 0.2, 1);
       overflow-y: auto;
     }
 
@@ -396,6 +409,12 @@
       color: var(--text);
       font-size: 1.35rem;
       cursor: pointer;
+      transition: 0.24s ease;
+    }
+
+    .drawer-close:hover {
+      color: var(--cyan);
+      transform: rotate(90deg);
     }
 
     .drawer-menu {
@@ -413,12 +432,15 @@
       background: rgba(15, 23, 42, 0.58);
       border: 1px solid var(--border);
       font-weight: 850;
-      transition: 0.2s ease;
+      transition: transform 0.24s ease, border-color 0.24s ease, background 0.24s ease, color 0.24s ease;
     }
 
-    .drawer-menu a:hover {
+    .drawer-menu a:hover,
+    .drawer-menu a.active {
       color: var(--cyan);
-      border-color: rgba(56, 189, 248, 0.32);
+      border-color: rgba(56, 189, 248, 0.42);
+      background:
+        linear-gradient(135deg, rgba(56, 189, 248, 0.16), rgba(34, 197, 94, 0.08));
       transform: translateX(4px);
     }
 
@@ -434,10 +456,25 @@
       font-size: 0.9rem;
     }
 
-    /* HERO */
+    /* SECTIONS */
+
+    section {
+      scroll-margin-top: 96px;
+    }
 
     .hero {
-      padding: 88px 0 56px;
+      min-height: calc(100vh - 92px);
+      padding: 88px 0 80px;
+      display: flex;
+      align-items: center;
+    }
+
+    .content-section {
+      min-height: calc(100vh - 92px);
+      padding: 110px 0 130px;
+      display: flex;
+      align-items: center;
+      position: relative;
     }
 
     .hero-grid {
@@ -445,6 +482,7 @@
       grid-template-columns: 1.15fr 0.85fr;
       gap: 18px;
       align-items: stretch;
+      width: 100%;
     }
 
     .hero-card,
@@ -569,7 +607,7 @@
       background: rgba(15, 23, 42, 0.72);
       color: var(--text);
       font-weight: 850;
-      transition: 0.2s ease;
+      transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease, background 0.24s ease;
     }
 
     .btn.primary {
@@ -580,6 +618,7 @@
 
     .btn:hover {
       transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.34);
       box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
     }
 
@@ -687,10 +726,6 @@
       white-space: pre-wrap;
     }
 
-    section {
-      padding: 46px 0;
-    }
-
     .section-head {
       margin-bottom: 22px;
     }
@@ -733,13 +768,15 @@
       border-radius: var(--radius-md);
       padding: 20px;
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
-      transition: 0.22s ease;
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
     }
 
     .card:hover,
     .contact-item:hover {
       transform: translateY(-4px);
       border-color: rgba(56, 189, 248, 0.28);
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(15, 23, 42, 0.68));
     }
 
     .card h3 {
@@ -778,6 +815,13 @@
       color: #dbeafe;
       font-size: 0.86rem;
       font-weight: 800;
+      transition: transform 0.24s ease, border-color 0.24s ease;
+    }
+
+    .tag:hover,
+    .flow span:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.36);
     }
 
     .main-project {
@@ -799,7 +843,7 @@
       border-radius: 18px;
       background: rgba(2, 6, 23, 0.38);
       box-shadow: none;
-      transition: 0.22s ease;
+      transition: transform 0.28s ease, border-color 0.28s ease, background 0.28s ease;
     }
 
     .contact-item small {
@@ -821,11 +865,30 @@
       text-align: center;
     }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition:
+        opacity 0.72s ease,
+        transform 0.72s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     @media (max-width: 960px) {
       .hero-grid,
       .grid-2,
       .grid-3 {
         grid-template-columns: 1fr;
+      }
+
+      .content-section {
+        min-height: auto;
+        padding: 86px 0 96px;
+        display: block;
       }
 
       .nav-inner {
@@ -837,7 +900,9 @@
       }
 
       .hero {
-        padding-top: 38px;
+        min-height: auto;
+        padding: 38px 0 70px;
+        display: block;
       }
 
       .actions {
@@ -965,7 +1030,7 @@
   <main>
     <section id="home" class="hero">
       <div class="container hero-grid">
-        <div class="hero-card">
+        <div class="hero-card reveal">
           <div class="badge">
             <span class="badge-dot"></span>
             Available for learning, building, and shipping
@@ -995,7 +1060,7 @@
           </div>
         </div>
 
-        <aside class="side-card">
+        <aside class="side-card reveal">
           <div class="orbit-box">
             <div class="orbit-dot"></div>
             <div class="orbit-text">
@@ -1025,9 +1090,9 @@ Done. UI ready to ship ✦</pre>
       </div>
     </section>
 
-    <section id="stack">
+    <section id="stack" class="content-section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div class="kicker">My Tech Constellation</div>
           <h2>Stack yang Dipakai Untuk Build</h2>
           <p class="section-desc">
@@ -1037,37 +1102,37 @@ Done. UI ready to ship ✦</pre>
         </div>
 
         <div class="grid grid-3">
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🌐</div>
             <h3>HTML</h3>
             <p>Semantic structure untuk halaman portfolio dan resume.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🎨</div>
             <h3>CSS</h3>
             <p>Responsive UI, dark theme, spacing, dan visual polish.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">⚡</div>
             <h3>JavaScript</h3>
             <p>Interaction layer untuk UX ringan dan halaman yang lebih hidup.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">📈</div>
             <h3>Pine Script</h3>
             <p>TradingView tools dan indikator structured analysis.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🐧</div>
             <h3>Linux</h3>
             <p>Terminal workflow, troubleshooting, dan system learning.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🛰️</div>
             <h3>GitHub</h3>
             <p>Version control, profile, documentation, dan GitHub Pages.</p>
@@ -1076,9 +1141,9 @@ Done. UI ready to ship ✦</pre>
       </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="content-section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div class="kicker">Featured Universe</div>
           <h2>Project Pilihan Dengan Vibe Premium</h2>
           <p class="section-desc">
@@ -1087,7 +1152,7 @@ Done. UI ready to ship ✦</pre>
           </p>
         </div>
 
-        <div class="card main-project">
+        <div class="card main-project reveal">
           <div class="kicker">Main Project</div>
           <h3>SR Hunter V4 — TradingView Pine Script Indicator</h3>
           <p>
@@ -1122,19 +1187,19 @@ Done. UI ready to ship ✦</pre>
         </div>
 
         <div class="grid grid-3" style="margin-top: 16px;">
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">💼</div>
             <h3>GitHub Pages Website</h3>
             <p>Website personal untuk menampilkan profile, skill, project, kontak, dan identitas developer.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">📊</div>
             <h3>TradingView Pine Scripts</h3>
             <p>Collection Pine Script untuk eksperimen indikator dan structured market analysis.</p>
           </article>
 
-          <article class="card">
+          <article class="card reveal">
             <div class="icon">🐧</div>
             <h3>Linux Dev Setup</h3>
             <p>Dokumentasi setup Linux, terminal, troubleshooting, dan workflow harian.</p>
@@ -1143,9 +1208,9 @@ Done. UI ready to ship ✦</pre>
       </div>
     </section>
 
-    <section id="resume">
+    <section id="resume" class="content-section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div class="kicker">Resume</div>
           <h2>Profile Summary</h2>
           <p class="section-desc">
@@ -1155,7 +1220,7 @@ Done. UI ready to ship ✦</pre>
         </div>
 
         <div class="grid grid-2">
-          <div class="card">
+          <div class="card reveal">
             <h3>Target Roles</h3>
             <ul>
               <li>Software Engineer Intern / Entry-Level</li>
@@ -1166,7 +1231,7 @@ Done. UI ready to ship ✦</pre>
             </ul>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3>Additional Information</h3>
             <ul>
               <li>Open to internship and entry-level opportunities</li>
@@ -1176,12 +1241,12 @@ Done. UI ready to ship ✦</pre>
           </div>
         </div>
 
-        <div class="actions">
+        <div class="actions reveal">
           <a class="btn primary" href="Raafik_Aziiz_CV_EN.pdf" target="_blank" rel="noopener">Download CV EN</a>
           <a class="btn" href="Raafik_Aziiz_CV_ID.pdf" target="_blank" rel="noopener">Download CV ID</a>
         </div>
 
-        <div class="tags">
+        <div class="tags reveal">
           <span class="tag">Software Engineering Basics</span>
           <span class="tag">Pine Script Development</span>
           <span class="tag">TradingView Indicator Development</span>
@@ -1200,9 +1265,9 @@ Done. UI ready to ship ✦</pre>
       </div>
     </section>
 
-    <section id="education">
+    <section id="education" class="content-section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div class="kicker">Education Path</div>
           <h2>Education</h2>
           <p class="section-desc">
@@ -1212,14 +1277,14 @@ Done. UI ready to ship ✦</pre>
         </div>
 
         <div class="grid grid-2">
-          <div class="card">
+          <div class="card reveal">
             <h3>SMK Darul Qur'an Wal Irsyad Wonosari</h3>
             <p>Vocational High School — Multimedia</p>
             <p>2018 - 2021</p>
             <p>Status: Graduated</p>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <h3>Universitas AMIKOM Yogyakarta</h3>
             <p>Bachelor of Informatics</p>
             <p>Status: Currently on academic leave at Semester 6</p>
@@ -1228,37 +1293,37 @@ Done. UI ready to ship ✦</pre>
       </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="content-section">
       <div class="container">
-        <div class="section-head">
+        <div class="section-head reveal">
           <div class="kicker">Let’s Connect</div>
           <h2>Contact</h2>
         </div>
 
         <div class="grid grid-2">
           <div class="contact-list">
-            <a class="contact-item" href="mailto:raafikaziiznur@gmail.com">
+            <a class="contact-item reveal" href="mailto:raafikaziiznur@gmail.com">
               <small>Email</small>
               <span>raafikaziiznur@gmail.com</span>
             </a>
 
-            <a class="contact-item" href="mailto:raafikaziiz@students.amikom.ac.id">
+            <a class="contact-item reveal" href="mailto:raafikaziiz@students.amikom.ac.id">
               <small>Academic Email</small>
               <span>raafikaziiz@students.amikom.ac.id</span>
             </a>
 
-            <a class="contact-item" href="https://github.com/raafikaziiz-coder" target="_blank" rel="noopener">
+            <a class="contact-item reveal" href="https://github.com/raafikaziiz-coder" target="_blank" rel="noopener">
               <small>GitHub</small>
               <span>github.com/raafikaziiz-coder</span>
             </a>
 
-            <a class="contact-item" href="https://www.linkedin.com/in/raafikaziiznurjaliil" target="_blank" rel="noopener">
+            <a class="contact-item reveal" href="https://www.linkedin.com/in/raafikaziiznurjaliil" target="_blank" rel="noopener">
               <small>LinkedIn</small>
               <span>linkedin.com/in/raafikaziiznurjaliil</span>
             </a>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <div class="kicker">RA</div>
             <h3>About Raafik</h3>
             <p>
@@ -1284,7 +1349,10 @@ Done. UI ready to ship ✦</pre>
     const drawerOverlay = document.getElementById("drawerOverlay");
     const menuToggle = document.getElementById("menuToggle");
     const drawerClose = document.getElementById("drawerClose");
-    const drawerLinks = document.querySelectorAll(".drawer-menu a");
+    const drawerLinks = document.querySelectorAll(".drawer-menu a[href^='#']");
+    const allSectionLinks = document.querySelectorAll("a[href^='#']");
+    const sections = document.querySelectorAll("section[id]");
+    const revealItems = document.querySelectorAll(".reveal");
 
     let lastScrollY = window.scrollY;
 
@@ -1300,13 +1368,79 @@ Done. UI ready to ship ✦</pre>
       document.body.style.overflow = "";
     }
 
+    function scrollToSection(targetId) {
+      const target = document.querySelector(targetId);
+
+      if (!target) return;
+
+      const navbarHeight = navbar.offsetHeight;
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 18;
+
+      window.scrollTo({
+        top: targetPosition,
+        behavior: "smooth"
+      });
+
+      history.pushState(null, "", targetId);
+    }
+
+    function setActiveMenu() {
+      let currentSection = "home";
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop - navbar.offsetHeight - 90;
+
+        if (window.scrollY >= sectionTop) {
+          currentSection = section.getAttribute("id");
+        }
+      });
+
+      drawerLinks.forEach((link) => {
+        link.classList.remove("active");
+
+        if (link.getAttribute("href") === `#${currentSection}`) {
+          link.classList.add("active");
+        }
+      });
+    }
+
     menuToggle.addEventListener("click", openDrawer);
     drawerClose.addEventListener("click", closeDrawer);
     drawerOverlay.addEventListener("click", closeDrawer);
 
-    drawerLinks.forEach((link) => {
-      link.addEventListener("click", closeDrawer);
+    allSectionLinks.forEach((link) => {
+      link.addEventListener("click", (event) => {
+        const href = link.getAttribute("href");
+
+        if (!href || href === "#") return;
+
+        const target = document.querySelector(href);
+
+        if (!target) return;
+
+        event.preventDefault();
+        closeDrawer();
+
+        setTimeout(() => {
+          scrollToSection(href);
+        }, 120);
+      });
     });
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      {
+        threshold: 0.12
+      }
+    );
+
+    revealItems.forEach((item) => observer.observe(item));
 
     window.addEventListener("scroll", () => {
       const currentScrollY = window.scrollY;
@@ -1324,6 +1458,20 @@ Done. UI ready to ship ✦</pre>
       }
 
       lastScrollY = currentScrollY;
+
+      setActiveMenu();
+    });
+
+    window.addEventListener("load", () => {
+      setActiveMenu();
+
+      revealItems.forEach((item) => {
+        const rect = item.getBoundingClientRect();
+
+        if (rect.top < window.innerHeight) {
+          item.classList.add("visible");
+        }
+      });
     });
   </script>
 </body>
