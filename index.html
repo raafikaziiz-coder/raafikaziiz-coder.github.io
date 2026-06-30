@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Raafik Aziiz Nur Jaliil — Portfolio</title>
-  <meta
-    name="description"
-    content="Portfolio of Raafik Aziiz Nur Jaliil — Aspiring Software Engineer, Pine Script Developer, and Linux Enthusiast."
-  />
+  <title>Raafik Aziiz Nur Jaliil — Galaxy Portfolio</title>
+  <meta name="description" content="Portfolio of Raafik Aziiz Nur Jaliil — Aspiring Software Engineer, Pine Script Developer, and Linux Enthusiast." />
 
   <link rel="icon" href="ra-logo.png" type="image/png" />
 
   <style>
     :root {
       --bg: #030712;
-      --card: #020617;
-      --card-soft: rgba(15, 23, 42, 0.82);
+      --card: rgba(15, 23, 42, 0.78);
       --text: #e5e7eb;
       --muted: #94a3b8;
       --soft: #cbd5e1;
       --cyan: #38bdf8;
       --green: #22c55e;
-      --border: rgba(148, 163, 184, 0.16);
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --border: rgba(148, 163, 184, 0.17);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+      --container: 1120px;
+      --radius-lg: 32px;
+      --radius-md: 24px;
     }
 
     * {
@@ -37,11 +36,13 @@
     }
 
     body {
+      min-height: 100vh;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
         radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 30%),
-        radial-gradient(circle at top right, rgba(34, 197, 94, 0.12), transparent 28%),
-        linear-gradient(180deg, #020617 0%, #030712 55%, #020617 100%);
+        radial-gradient(circle at top right, rgba(139, 92, 246, 0.14), transparent 26%),
+        radial-gradient(circle at 50% 22%, rgba(34, 197, 94, 0.08), transparent 34%),
+        linear-gradient(180deg, #020617 0%, #030712 48%, #020617 100%);
       color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
@@ -53,12 +54,25 @@
       inset: 0;
       pointer-events: none;
       background-image:
-        radial-gradient(circle, rgba(255, 255, 255, 0.14) 1px, transparent 1.2px),
+        radial-gradient(circle, rgba(255, 255, 255, 0.12) 1px, transparent 1.2px),
         radial-gradient(circle, rgba(56, 189, 248, 0.12) 1px, transparent 1.2px);
       background-size: 58px 58px, 96px 96px;
-      background-position: 0 0, 28px 34px;
-      opacity: 0.22;
+      background-position: 0 0, 28px 36px;
+      opacity: 0.2;
       z-index: 0;
+      animation: starDrift 30s linear infinite;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 18% 30%, rgba(56, 189, 248, 0.06), transparent 20%),
+        radial-gradient(circle at 80% 18%, rgba(34, 197, 94, 0.05), transparent 22%);
+      z-index: 0;
+      animation: nebulaFloat 12s ease-in-out infinite alternate;
     }
 
     a {
@@ -66,162 +80,371 @@
       text-decoration: none;
     }
 
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     .container {
-      width: min(1120px, 92%);
+      width: min(var(--container), 92%);
       margin: 0 auto;
       position: relative;
       z-index: 1;
     }
 
-    /* NAVBAR */
+    @keyframes starDrift {
+      from { background-position: 0 0, 28px 36px; }
+      to { background-position: 120px 120px, 180px 160px; }
+    }
+
+    @keyframes nebulaFloat {
+      from { opacity: 0.6; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(-18px); }
+    }
+
+    @keyframes brandFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-2px); }
+    }
+
+    @keyframes dotPulse {
+      0%, 100% {
+        opacity: 0.85;
+        text-shadow: 0 0 12px rgba(56, 189, 248, 0.85), 0 0 22px rgba(56, 189, 248, 0.55);
+      }
+      50% {
+        opacity: 1;
+        text-shadow: 0 0 18px rgba(56, 189, 248, 1), 0 0 34px rgba(56, 189, 248, 0.75);
+      }
+    }
+
+    @keyframes cardGlow {
+      0%, 100% { border-color: rgba(148, 163, 184, 0.17); }
+      50% { border-color: rgba(56, 189, 248, 0.28); }
+    }
+
+    @keyframes cursorBlink {
+      0%, 45% { opacity: 1; }
+      46%, 100% { opacity: 0; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* HEADER */
+
     .navbar {
       position: sticky;
       top: 0;
-      z-index: 20;
-      background: rgba(2, 6, 23, 0.82);
-      backdrop-filter: blur(18px);
+      z-index: 60;
+      background: rgba(2, 6, 23, 0.86);
       border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
+      transform: translateY(0);
+      transition: transform 0.28s ease, background 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .navbar.nav-hidden {
+      transform: translateY(-110%);
+    }
+
+    .navbar.nav-scrolled {
+      background: rgba(2, 6, 23, 0.94);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
     }
 
     .nav-inner {
-      min-height: 86px;
-      display: flex;
+      min-height: 92px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+      gap: 16px;
+    }
+
+    .menu-toggle {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      background:
+        radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.14), transparent 35%),
+        rgba(15, 23, 42, 0.76);
+      color: var(--text);
+      font-size: 1.35rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.12);
+      transition: 0.2s ease;
+    }
+
+    .menu-toggle:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.38);
+      color: var(--cyan);
     }
 
     .brand {
-      display: flex;
+      justify-self: start;
+      display: inline-flex;
       align-items: center;
-      gap: 14px;
+      gap: 10px;
       min-width: 0;
+      padding: 7px 15px 7px 8px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(56, 189, 248, 0.16), transparent 30%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(2, 6, 23, 0.78));
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      box-shadow:
+        0 0 28px rgba(56, 189, 248, 0.12),
+        inset 0 0 16px rgba(56, 189, 248, 0.04);
+      animation: brandFloat 5s ease-in-out infinite;
     }
 
-    .logo-orb {
-      width: 68px;
-      height: 68px;
-      border-radius: 999px;
+    .logo-frame {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
       display: grid;
       place-items: center;
       position: relative;
       flex: 0 0 auto;
       background:
-        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.25), transparent 30%),
-        radial-gradient(circle at 70% 80%, rgba(56, 189, 248, 0.2), transparent 42%),
-        radial-gradient(circle at 35% 70%, rgba(34, 197, 94, 0.12), transparent 45%),
-        rgba(15, 23, 42, 0.96);
-      border: 1px solid rgba(56, 189, 248, 0.35);
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.13), transparent 34%),
+        linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(2, 6, 23, 0.9));
+      border: 1px solid rgba(56, 189, 248, 0.2);
       box-shadow:
-        0 0 32px rgba(56, 189, 248, 0.24),
-        inset 0 0 24px rgba(56, 189, 248, 0.08);
+        0 0 18px rgba(56, 189, 248, 0.16),
+        inset 0 0 14px rgba(56, 189, 248, 0.05);
+      overflow: hidden;
     }
 
-    .logo-orb::before {
+    .logo-frame::after {
       content: "";
       position: absolute;
-      width: 88px;
-      height: 28px;
-      border: 1px solid rgba(56, 189, 248, 0.42);
+      width: 6px;
+      height: 6px;
+      right: 7px;
+      top: 7px;
       border-radius: 999px;
-      transform: rotate(-25deg);
+      background: var(--cyan);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.75);
+      opacity: 0.85;
     }
 
-    .logo-orb::after {
-      content: "";
-      position: absolute;
-      width: 8px;
-      height: 8px;
-      right: 10px;
-      top: 11px;
-      border-radius: 999px;
-      background: var(--green);
-      box-shadow: 0 0 16px rgba(34, 197, 94, 0.9);
-    }
-
-    .logo-orb img {
-      width: 50px;
-      height: 50px;
+    .logo-frame img {
+      width: 48px;
+      height: 48px;
       object-fit: contain;
       position: relative;
       z-index: 2;
+      border-radius: 12px;
       filter:
-        drop-shadow(0 0 12px rgba(56, 189, 248, 0.45))
-        drop-shadow(0 0 20px rgba(34, 197, 94, 0.18));
+        drop-shadow(0 0 8px rgba(56, 189, 248, 0.22))
+        drop-shadow(0 0 14px rgba(34, 197, 94, 0.09));
     }
 
-    .brand-text {
+    .brand-copy {
       display: flex;
       flex-direction: column;
-      line-height: 1.1;
+      justify-content: center;
+      min-width: 0;
+      line-height: 1.05;
     }
 
     .brand-title {
-      font-size: 1.65rem;
+      font-size: 1.58rem;
       font-weight: 950;
       letter-spacing: -0.06em;
       color: #f8fafc;
       white-space: nowrap;
+      text-shadow: 0 0 18px rgba(56, 189, 248, 0.1);
     }
 
     .brand-dot {
       color: var(--cyan);
       margin-left: 4px;
-      text-shadow:
-        0 0 12px rgba(56, 189, 248, 0.8),
-        0 0 22px rgba(56, 189, 248, 0.5);
+      animation: dotPulse 2.4s ease-in-out infinite;
     }
 
     .brand-subtitle {
-      margin-top: 4px;
+      margin-top: 6px;
       color: var(--muted);
-      font-size: 0.82rem;
+      font-size: 0.76rem;
       letter-spacing: 0.02em;
       white-space: nowrap;
     }
 
-    .menu {
+    .contact-cta {
+      justify-self: end;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      color: #020617;
+      font-weight: 950;
+      background: linear-gradient(135deg, var(--cyan), var(--green));
+      box-shadow: 0 18px 36px rgba(34, 197, 94, 0.12);
+      transition: 0.22s ease;
+    }
+
+    .contact-cta:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(135deg, #67e8f9, #4ade80);
+    }
+
+    /* SIDEBAR MENU */
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(2, 6, 23, 0.62);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.25s ease;
+    }
+
+    .drawer-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 90;
+      width: min(330px, 86vw);
+      height: 100vh;
+      padding: 22px;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.16), transparent 32%),
+        linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(2, 6, 23, 0.98));
+      border-right: 1px solid rgba(56, 189, 248, 0.18);
+      box-shadow: 24px 0 70px rgba(0, 0, 0, 0.48);
+      transform: translateX(-105%);
+      transition: transform 0.28s ease;
+    }
+
+    .drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-head {
       display: flex;
       align-items: center;
-      gap: 18px;
-      color: var(--muted);
-      font-weight: 750;
-      font-size: 0.95rem;
+      justify-content: space-between;
+      margin-bottom: 22px;
     }
 
-    .menu a {
-      transition: 0.2s ease;
+    .drawer-title {
+      font-size: 1.2rem;
+      font-weight: 950;
     }
 
-    .menu a:hover {
+    .drawer-title span {
       color: var(--cyan);
     }
 
-    .menu .resume-link {
-      color: #020617;
-      background: linear-gradient(135deg, var(--cyan), var(--green));
-      padding: 10px 15px;
-      border-radius: 999px;
-      font-weight: 900;
+    .drawer-close {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.72);
+      color: var(--text);
+      font-size: 1.35rem;
+      cursor: pointer;
+    }
+
+    .drawer-menu {
+      display: grid;
+      gap: 10px;
+    }
+
+    .drawer-menu a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 16px;
+      border-radius: 18px;
+      color: var(--soft);
+      background: rgba(15, 23, 42, 0.58);
+      border: 1px solid var(--border);
+      font-weight: 850;
+      transition: 0.2s ease;
+    }
+
+    .drawer-menu a:hover {
+      color: var(--cyan);
+      border-color: rgba(56, 189, 248, 0.32);
+      transform: translateX(4px);
+    }
+
+    .drawer-note {
+      margin-top: 22px;
+      color: var(--muted);
+      font-size: 0.9rem;
     }
 
     /* HERO */
+
     .hero {
-      padding: 86px 0 54px;
+      padding: 88px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .hero-card,
+    .side-card,
+    .card,
+    .terminal,
+    .contact-item {
+      border: 1px solid var(--border);
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.58));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
     }
 
     .hero-card {
-      border: 1px solid var(--border);
-      border-radius: 34px;
+      border-radius: var(--radius-lg);
       padding: clamp(24px, 5vw, 46px);
-      background:
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.14), transparent 36%),
-        linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(15, 23, 42, 0.52));
-      box-shadow: var(--shadow);
+      position: relative;
       overflow: hidden;
+      animation: cardGlow 7s ease-in-out infinite;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      right: -180px;
+      top: -180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.22), transparent 68%);
+      pointer-events: none;
     }
 
     .badge {
+      position: relative;
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -244,10 +467,12 @@
     }
 
     h1 {
-      font-size: clamp(3.2rem, 9vw, 7rem);
+      position: relative;
+      font-size: clamp(3.1rem, 9vw, 7rem);
       line-height: 0.92;
       letter-spacing: -0.085em;
       margin-bottom: 24px;
+      max-width: 780px;
     }
 
     .gradient {
@@ -258,13 +483,39 @@
     }
 
     .hero-text {
+      position: relative;
       color: var(--soft);
       max-width: 760px;
       font-size: clamp(1rem, 2vw, 1.15rem);
       margin-bottom: 26px;
     }
 
+    .code-line {
+      position: relative;
+      max-width: 640px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(2, 6, 23, 0.55);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      color: #bfdbfe;
+      font-family: Consolas, "SFMono-Regular", monospace;
+      font-size: 0.92rem;
+      overflow-x: auto;
+      margin-bottom: 26px;
+    }
+
+    .cursor {
+      display: inline-block;
+      width: 8px;
+      height: 1em;
+      background: var(--cyan);
+      margin-left: 4px;
+      vertical-align: -2px;
+      animation: cursorBlink 1s steps(2, start) infinite;
+    }
+
     .actions {
+      position: relative;
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
@@ -295,9 +546,112 @@
       box-shadow: 0 18px 42px rgba(0, 0, 0, 0.28);
     }
 
-    /* SECTIONS */
+    .side-card {
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      display: grid;
+      gap: 14px;
+      animation: cardGlow 8s ease-in-out infinite;
+    }
+
+    .orbit-box {
+      min-height: 170px;
+      border-radius: 26px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 30% 20%, rgba(56, 189, 248, 0.22), transparent 28%),
+        radial-gradient(circle at 70% 70%, rgba(34, 197, 94, 0.14), transparent 28%),
+        rgba(2, 6, 23, 0.46);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+
+    .orbit-box::before,
+    .orbit-box::after {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      border-radius: 50%;
+      transform: rotate(-18deg);
+    }
+
+    .orbit-box::after {
+      inset: 48px 20px;
+      border-color: rgba(34, 197, 94, 0.16);
+      transform: rotate(24deg);
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 999px;
+      background: var(--cyan);
+      left: 28%;
+      top: 38%;
+      box-shadow: 0 0 34px rgba(56, 189, 248, 0.9);
+    }
+
+    .orbit-text {
+      position: absolute;
+      left: 18px;
+      bottom: 18px;
+    }
+
+    .orbit-text strong {
+      display: block;
+      font-size: 1.08rem;
+    }
+
+    .orbit-text span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .terminal {
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(2, 6, 23, 0.84);
+      box-shadow: none;
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ef4444;
+    }
+
+    .dot:nth-child(2) {
+      background: #facc15;
+    }
+
+    .dot:nth-child(3) {
+      background: #22c55e;
+    }
+
+    pre {
+      padding: 16px;
+      color: #dbeafe;
+      font-family: Consolas, "SFMono-Regular", monospace;
+      font-size: 0.84rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+
     section {
-      padding: 44px 0;
+      padding: 46px 0;
     }
 
     .section-head {
@@ -317,12 +671,12 @@
       font-size: clamp(1.8rem, 4vw, 3rem);
       line-height: 1.05;
       letter-spacing: -0.055em;
+      margin-bottom: 10px;
     }
 
     .section-desc {
       color: var(--muted);
-      max-width: 720px;
-      margin-top: 8px;
+      max-width: 760px;
     }
 
     .grid {
@@ -330,20 +684,25 @@
       gap: 16px;
     }
 
-    .grid-3 {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
     .grid-2 {
       grid-template-columns: repeat(2, 1fr);
     }
 
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
     .card {
-      border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: var(--radius-md);
       padding: 20px;
-      background: rgba(15, 23, 42, 0.68);
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.18);
+      transition: 0.22s ease;
+    }
+
+    .card:hover,
+    .contact-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(56, 189, 248, 0.28);
     }
 
     .card h3 {
@@ -356,23 +715,16 @@
       color: var(--muted);
     }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 14px;
+    .card ul {
+      padding-left: 18px;
     }
 
-    .tag {
-      padding: 7px 11px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(2, 6, 23, 0.4);
-      color: var(--soft);
-      font-size: 0.85rem;
-      font-weight: 750;
+    .icon {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
     }
 
+    .tags,
     .flow {
       display: flex;
       flex-wrap: wrap;
@@ -380,17 +732,18 @@
       margin-top: 14px;
     }
 
+    .tag,
     .flow span {
       padding: 8px 12px;
       border-radius: 999px;
       background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.18);
+      border: 1px solid rgba(56, 189, 248, 0.16);
       color: #dbeafe;
       font-size: 0.86rem;
-      font-weight: 850;
+      font-weight: 800;
     }
 
-    .project-main {
+    .main-project {
       background:
         radial-gradient(circle at top right, rgba(56, 189, 248, 0.13), transparent 36%),
         rgba(15, 23, 42, 0.74);
@@ -407,8 +760,9 @@
       gap: 2px;
       padding: 15px;
       border-radius: 18px;
-      border: 1px solid var(--border);
       background: rgba(2, 6, 23, 0.38);
+      box-shadow: none;
+      transition: 0.22s ease;
     }
 
     .contact-item small {
@@ -430,34 +784,19 @@
       text-align: center;
     }
 
-    /* MOBILE */
-    @media (max-width: 860px) {
-      .nav-inner {
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 14px 0;
-      }
-
-      .menu {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-
-      .menu a {
-        padding: 8px 10px;
-        border: 1px solid var(--border);
-        border-radius: 999px;
-        background: rgba(15, 23, 42, 0.58);
-      }
-
-      .menu .resume-link {
-        background: linear-gradient(135deg, var(--cyan), var(--green));
-      }
-
-      .grid-3,
-      .grid-2 {
+    @media (max-width: 960px) {
+      .hero-grid,
+      .grid-2,
+      .grid-3 {
         grid-template-columns: 1fr;
+      }
+
+      .nav-inner {
+        min-height: 84px;
+      }
+
+      .contact-cta {
+        padding: 0 18px;
       }
 
       .hero {
@@ -474,26 +813,56 @@
       }
     }
 
-    @media (max-width: 520px) {
-      .logo-orb {
-        width: 58px;
-        height: 58px;
+    @media (max-width: 620px) {
+      .nav-inner {
+        grid-template-columns: auto 1fr;
       }
 
-      .logo-orb img {
-        width: 42px;
-        height: 42px;
+      .contact-cta {
+        display: none;
+      }
+
+      .brand {
+        justify-self: start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .menu-toggle {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+      }
+
+      .brand {
+        padding: 7px 12px 7px 8px;
+        gap: 9px;
+        border-radius: 20px;
+      }
+
+      .logo-frame {
+        width: 50px;
+        height: 50px;
+        border-radius: 15px;
+      }
+
+      .logo-frame img {
+        width: 40px;
+        height: 40px;
+        border-radius: 11px;
       }
 
       .brand-title {
-        font-size: 1.35rem;
+        font-size: 1.25rem;
       }
 
       .brand-subtitle {
-        font-size: 0.72rem;
+        font-size: 0.66rem;
+        margin-top: 5px;
       }
 
-      .hero-card {
+      .hero-card,
+      .side-card {
         border-radius: 24px;
       }
 
@@ -505,37 +874,56 @@
 </head>
 
 <body>
-  <header class="navbar">
+  <header class="navbar" id="navbar">
     <div class="container nav-inner">
-      <a class="brand" href="#home" aria-label="Go to home">
-        <div class="logo-orb">
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu">
+        ☰
+      </button>
+
+      <a class="brand" href="#home" aria-label="Raff homepage">
+        <div class="logo-frame">
           <img src="ra-logo.png" alt="RA Logo" />
         </div>
 
-        <div class="brand-text">
+        <div class="brand-copy">
           <div class="brand-title">Raff<span class="brand-dot">.</span></div>
           <div class="brand-subtitle">Software • Pine • Linux</div>
         </div>
       </a>
 
-      <nav class="menu" aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#contact">Contact</a>
-        <a class="resume-link" href="#resume">Resume</a>
-      </nav>
+      <a class="contact-cta" href="#contact">Contact</a>
     </div>
   </header>
 
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <aside class="drawer" id="drawer" aria-label="Sidebar navigation">
+    <div class="drawer-head">
+      <div class="drawer-title">Raff<span>.</span></div>
+      <button class="drawer-close" id="drawerClose" type="button" aria-label="Close menu">×</button>
+    </div>
+
+    <nav class="drawer-menu">
+      <a href="#home">Home <span>↗</span></a>
+      <a href="#stack">Stack <span>↗</span></a>
+      <a href="#projects">Projects <span>↗</span></a>
+      <a href="#resume">Resume <span>↗</span></a>
+      <a href="#education">Education <span>↗</span></a>
+      <a href="#contact">Contact <span>↗</span></a>
+    </nav>
+
+    <p class="drawer-note">
+      Galaxy portfolio by Raafik Aziiz Nur Jaliil.
+    </p>
+  </aside>
+
   <main>
     <section id="home" class="hero">
-      <div class="container">
+      <div class="container hero-grid">
         <div class="hero-card">
           <div class="badge">
             <span class="badge-dot"></span>
-            Open to internship & entry-level opportunities
+            Available for learning, building, and shipping
           </div>
 
           <h1>
@@ -546,15 +934,99 @@
           <p class="hero-text">
             Halo, saya <strong>Raafik Aziiz Nur Jaliil</strong>.
             Aspiring Software Engineer, Pine Script Developer, dan Linux Enthusiast
-            yang membangun project clean, useful, dan punya karakter visual kuat.
+            yang suka membangun project clean, useful, dan punya karakter visual kuat.
           </p>
 
-          <div class="actions">
-            <a class="btn primary" href="#projects">Explore Projects</a>
-            <a class="btn" href="#resume">View Resume</a>
-            <a class="btn" href="https://github.com/raafikaziiz-coder" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn" href="https://www.linkedin.com/in/raafikaziiznurjaliil" target="_blank" rel="noopener">LinkedIn</a>
+          <div class="code-line">
+            const dev = "Raafik";<br />
+            focus: ["Software", "Pine", "Linux"];<br />
+            ship(cleanCode, strongUI);<span class="cursor"></span>
           </div>
+
+          <div class="actions">
+            <a class="btn primary" href="#projects">Explore Projects ✦</a>
+            <a class="btn" href="#resume">View Resume</a>
+            <a class="btn" href="https://github.com/raafikaziiz-coder" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/raafikaziiznurjaliil" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <aside class="side-card">
+          <div class="orbit-box">
+            <div class="orbit-dot"></div>
+            <div class="orbit-text">
+              <strong>Pine Script</strong>
+              <span>TradingView indicators</span>
+            </div>
+          </div>
+
+          <div class="terminal">
+            <div class="terminal-top">
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span>raafik@galaxy:~</span>
+            </div>
+            <pre>raafik@galaxy:~$ git status
+On branch main
+Project: SR Hunter V4
+Focus: cleaner decision, better UI, trader-first panel
+
+raafik@galaxy:~$ npm run imagination
+Compiling galaxy interface...
+Done. UI ready to ship ✦</pre>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="container">
+        <div class="section-head">
+          <div class="kicker">My Tech Constellation</div>
+          <h2>Stack yang Dipakai Untuk Build</h2>
+          <p class="section-desc">
+            Kumpulan skill dan tools yang membentuk identitas developer saya di GitHub Pages,
+            portfolio, dan project pembelajaran.
+          </p>
+        </div>
+
+        <div class="grid grid-3">
+          <article class="card">
+            <div class="icon">🌐</div>
+            <h3>HTML</h3>
+            <p>Semantic structure untuk halaman portfolio dan resume.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🎨</div>
+            <h3>CSS</h3>
+            <p>Responsive UI, dark theme, spacing, dan visual polish.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">⚡</div>
+            <h3>JavaScript</h3>
+            <p>Interaction layer untuk UX ringan dan halaman yang lebih hidup.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">📈</div>
+            <h3>Pine Script</h3>
+            <p>TradingView tools dan indikator structured analysis.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🐧</div>
+            <h3>Linux</h3>
+            <p>Terminal workflow, troubleshooting, dan system learning.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🛰️</div>
+            <h3>GitHub</h3>
+            <p>Version control, profile, documentation, dan GitHub Pages.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -562,20 +1034,20 @@
     <section id="projects">
       <div class="container">
         <div class="section-head">
-          <div class="kicker">Featured Project</div>
-          <h2>SR Hunter V4</h2>
+          <div class="kicker">Featured Universe</div>
+          <h2>Project Pilihan Dengan Vibe Premium</h2>
           <p class="section-desc">
-            TradingView Pine Script indicator focused on structured market analysis
-            and decision-support workflow.
+            Project utama saya adalah SR Hunter V4, didukung portfolio website,
+            Pine Script collection, dan learning projects.
           </p>
         </div>
 
-        <div class="card project-main">
+        <div class="card main-project">
+          <div class="kicker">Main Project</div>
           <h3>SR Hunter V4 — TradingView Pine Script Indicator</h3>
           <p>
             SR Hunter V4 dibuat sebagai decision-support tool, bukan blind buy/sell signal generator.
-            Project ini membantu validasi kondisi market melalui tahap trend, structure, location,
-            trigger, quality, risk, decision, dan UI output.
+            Project ini membantu validasi kondisi market melalui workflow berlapis.
           </p>
 
           <div class="flow">
@@ -599,39 +1071,29 @@
 
           <div class="actions">
             <a class="btn primary" href="https://github.com/raafikaziiz-coder/tradingview-pine-scripts" target="_blank" rel="noopener">
-              View Repository
+              View Repository ↗
             </a>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section id="skills">
-      <div class="container">
-        <div class="section-head">
-          <div class="kicker">Skills</div>
-          <h2>Tech Stack & Learning Focus</h2>
-          <p class="section-desc">
-            Skill yang sedang saya gunakan dan tingkatkan melalui project portfolio,
-            GitHub, Linux workflow, dan Pine Script development.
-          </p>
-        </div>
+        <div class="grid grid-3" style="margin-top: 16px;">
+          <article class="card">
+            <div class="icon">💼</div>
+            <h3>GitHub Pages Website</h3>
+            <p>Website personal untuk menampilkan profile, skill, project, kontak, dan identitas developer.</p>
+          </article>
 
-        <div class="tags">
-          <span class="tag">Software Engineering Basics</span>
-          <span class="tag">Pine Script Development</span>
-          <span class="tag">TradingView Indicator Development</span>
-          <span class="tag">HTML</span>
-          <span class="tag">CSS</span>
-          <span class="tag">JavaScript Basics</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">GitHub Pages</span>
-          <span class="tag">Linux Basics</span>
-          <span class="tag">Networking Basics</span>
-          <span class="tag">Troubleshooting</span>
-          <span class="tag">Automation Basics</span>
-          <span class="tag">Technical Documentation</span>
-          <span class="tag">Open Source Learning</span>
+          <article class="card">
+            <div class="icon">📊</div>
+            <h3>TradingView Pine Scripts</h3>
+            <p>Collection Pine Script untuk eksperimen indikator dan structured market analysis.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon">🐧</div>
+            <h3>Linux Dev Setup</h3>
+            <p>Dokumentasi setup Linux, terminal, troubleshooting, dan workflow harian.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -668,14 +1130,35 @@
             </ul>
           </div>
         </div>
+
+        <div class="tags">
+          <span class="tag">Software Engineering Basics</span>
+          <span class="tag">Pine Script Development</span>
+          <span class="tag">TradingView Indicator Development</span>
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript Basics</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">GitHub Pages</span>
+          <span class="tag">Linux Basics</span>
+          <span class="tag">Networking Basics</span>
+          <span class="tag">Troubleshooting</span>
+          <span class="tag">Automation Basics</span>
+          <span class="tag">Technical Documentation</span>
+          <span class="tag">Open Source Learning</span>
+        </div>
       </div>
     </section>
 
     <section id="education">
       <div class="container">
         <div class="section-head">
-          <div class="kicker">Education</div>
-          <h2>Education Path</h2>
+          <div class="kicker">Education Path</div>
+          <h2>Education</h2>
+          <p class="section-desc">
+            Background pendidikan dan proses belajar yang dilanjutkan lewat project nyata,
+            dokumentasi, dan portfolio development.
+          </p>
         </div>
 
         <div class="grid grid-2">
@@ -698,8 +1181,8 @@
     <section id="contact">
       <div class="container">
         <div class="section-head">
-          <div class="kicker">Contact</div>
-          <h2>Let’s Connect</h2>
+          <div class="kicker">Let’s Connect</div>
+          <h2>Contact</h2>
         </div>
 
         <div class="grid grid-2">
@@ -726,6 +1209,7 @@
           </div>
 
           <div class="card">
+            <div class="kicker">RA</div>
             <h3>About Raafik</h3>
             <p>
               Saya fokus belajar dan membangun project seputar software engineering,
@@ -743,5 +1227,54 @@
       Built by <strong>Raafik Aziiz Nur Jaliil</strong> · Raff Galaxy Portfolio · 2026
     </div>
   </footer>
+
+  <script>
+    const navbar = document.getElementById("navbar");
+    const drawer = document.getElementById("drawer");
+    const drawerOverlay = document.getElementById("drawerOverlay");
+    const menuToggle = document.getElementById("menuToggle");
+    const drawerClose = document.getElementById("drawerClose");
+    const drawerLinks = document.querySelectorAll(".drawer-menu a");
+
+    let lastScrollY = window.scrollY;
+
+    function openDrawer() {
+      drawer.classList.add("open");
+      drawerOverlay.classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeDrawer() {
+      drawer.classList.remove("open");
+      drawerOverlay.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    menuToggle.addEventListener("click", openDrawer);
+    drawerClose.addEventListener("click", closeDrawer);
+    drawerOverlay.addEventListener("click", closeDrawer);
+
+    drawerLinks.forEach((link) => {
+      link.addEventListener("click", closeDrawer);
+    });
+
+    window.addEventListener("scroll", () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > 80) {
+        navbar.classList.add("nav-scrolled");
+      } else {
+        navbar.classList.remove("nav-scrolled");
+      }
+
+      if (currentScrollY > lastScrollY && currentScrollY > 140) {
+        navbar.classList.add("nav-hidden");
+      } else {
+        navbar.classList.remove("nav-hidden");
+      }
+
+      lastScrollY = currentScrollY;
+    });
+  </script>
 </body>
 </html>
